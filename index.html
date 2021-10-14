@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sossego Redesign Homepage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="anime">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="anime__wrapper">
+                    <!--Anime Line-->
+                    <div class="anime__linewrapper darkwrapper">
+                        <div class="anime__line"></div>
+                    </div><!--Anime Line End-->
+                    <!--Anime Circle-->
+                    <div class="anime__circlewrapper darkwrapper">
+                        <div class="anime__circle"></div>
+                    </div><!--Anime Circle End-->
+                    <!--Anime Triangle-->
+                    <div class="anime__trianglewrapper">
+                        <div class="darkwrapper">
+                            <div class="anime__triangle"></div>
+                        </div>
+                    </div><!--Anime Triangle End-->
+                    <!--Anime Vector-->
+                    <div class="anime__vectorwrapper">
+                        <div class="darkwrapper">
+                            <img src="./assets/3.jpg" alt="" class="anime__vector">
+                        </div>
+                    </div><!--Anime Vector End-->
+                    <!--Anime Title-->
+                    <div class="anime__titlewrapper darkwrapper">
+                        <h3 class="anime__title">We Help Brands</h3>
+                    </div><!--Anime Title End-->
+                    <!--Anime Video-->
+                    <div class="anime__videowrapper">
+                        <video class="anime__video" muted autoplay loop>
+                            <source src="./assets/video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div><!--Anime Video End-->
+                    <!--Anime Text-->
+                    <ul class="anime__textlists">
+                        <li class="anime__textwrapper">
+                            <div class="anime__textboxwrapper d-flex align-items-lg-center flex-xl-row flex-column">
+                                <div class="anime__textheadingwrapper">
+                                    <h3 class="anime__textheading clip top">connect</h3>
+                                    <h3 class="anime__textheading clip center">connect</h3>
+                                    <h3 class="anime__textheading clip bottom">connect</h3>
+                                </div>
+                                <div class="anime__textcontent">
+                                    <p class="anime__textparagraph clip top">with the right agency partners</p>
+                                    <p class="anime__textparagraph clip center">with the right agency partners</p>
+                                    <p class="anime__textparagraph clip bottom">with the right agency partners</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="anime__textwrapper">
+                            <div class="anime__textboxwrapper d-flex align-items-lg-center flex-xl-row flex-column">
+                                <div class="anime__textheadingwrapper">
+                                    <h3 class="anime__textheading clip top">connect 1</h3>
+                                    <h3 class="anime__textheading clip center">connect 1</h3>
+                                    <h3 class="anime__textheading clip bottom">connect 1</h3>
+                                </div>
+                                <div class="anime__textcontent">
+                                    <p class="anime__textparagraph clip top">with the right agency partners</p>
+                                    <p class="anime__textparagraph clip center">with the right agency partners</p>
+                                    <p class="anime__textparagraph clip bottom">with the right agency partners</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="anime__textwrapper">
+                            <div class="anime__textboxwrapper d-flex align-items-lg-center flex-xl-row flex-column">
+                                <div class="anime__textheadingwrapper">
+                                    <h3 class="anime__textheading clip top">connect 3</h3>
+                                    <h3 class="anime__textheading clip center">connect 3</h3>
+                                    <h3 class="anime__textheading clip bottom">connect 3</h3>
+                                </div>
+                                <div class="anime__textcontent">
+                                    <p class="anime__textparagraph clip top">with the right agency partners</p>
+                                    <p class="anime__textparagraph clip center">with the right agency partners</p>
+                                    <p class="anime__textparagraph clip bottom">with the right agency partners</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul><!--Anime Text End-->
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+window.onload = function animate(){
+    setTimeout(
+        () => {
+            document.querySelector('.anime__wrapper').classList.add('start');
+        }, 2000
+    );
+    let currentText = -1;
+    const textWrappers = document.querySelectorAll('.anime__textwrapper');
+    const nextTextSlideTimeout = () => {
+        setTimeout(
+            () => {
+                textSlide();
+            }, 3000
+        );
+    }
+    const changeSlide = ( from, to ) => {
+        textWrappers[currentText].classList.remove('current');
+        currentText = to;
+        textWrappers[currentText].classList.add( 'current' );
+        return nextTextSlideTimeout();
+    }
+    const textSlide = () => {
+        if ( currentText === -1 ){
+            textWrappers[0].classList.add( 'current' );
+            currentText = 0;
+            return nextTextSlideTimeout();
+        }
+        else if ( currentText === textWrappers.length - 1 ){
+            return changeSlide( textWrappers.length - 1, 0 );
+        }
+        return changeSlide( currentText, currentText + 1 );
+    }
+    const videoWrapper = document.querySelector('.anime__videowrapper');
+    videoWrapper.addEventListener('animationstart', function triggerText() {
+        textSlide();
+    })
+}
+</script>
+
+</html>
